@@ -57,15 +57,19 @@ const App = () => {
 			id: persons.length + 1,
 		};
 
-		personService.create(nameObject).then(returnedPerson => {
-			setPersons(persons.concat(returnedPerson));
-			setSuccessMessage(`Added ${newName}`);
-			setTimeout(() => {
-				setSuccessMessage(null);
-			}, 5000);
-			setNewName("");
-			setNewPhoneNumber("");
-		});
+		personService.create(nameObject)
+			.then(returnedPerson => {
+				setPersons(persons.concat(returnedPerson));
+				setSuccessMessage(`Added ${newName}`);
+				setTimeout(() => {
+					setSuccessMessage(null);
+				}, 5000);
+				setNewName("");
+				setNewPhoneNumber("");
+			})
+			.catch(error => {
+				showError(error.response.data.error);
+			});
 	};
 
 	const personsToShow = persons.filter(person =>
