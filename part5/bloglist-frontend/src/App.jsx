@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from "react";
+import { Routes, Route, Link, Navigate, useNavigate, useMatch } from "react-router-dom";
 import Blog from "./components/Blog";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
 import Notification from "./components/Notification";
 import Togglable from "./components/Togglable";
 import BlogForm from "./components/BlogForm";
+import LoginForm from "./components/LoginForm";
+import BlogListItem from "./components/BlogListItem";
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -15,6 +18,7 @@ const App = () => {
 	const [messageType, setMessageType] = useState("success");
 
 	const blogFormRef = useRef();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		blogService.getAll().then(blogs =>
@@ -49,7 +53,6 @@ const App = () => {
 				user: { username: user.username, name: user.name, id: user.id },
 			};
 
-			blogFormRef.current.toggleVisibility();
 			setBlogs(blogs.concat(blogWithUser));
 			notify(`a new blog ${newBlog.title} by ${newBlog.author} added`);
 		} catch (exception) {
@@ -79,6 +82,7 @@ const App = () => {
 				await blogService.remove(blog.id);
 				setBlogs(blogs.filter(b => b.id !== blog.id));
 				notify(`blog ${blog.title} removed`);
+				navigate("/");
 			} catch (exception) {
 				console.log(exception);
 				notify("removing blog failed", "error");
@@ -98,6 +102,7 @@ const App = () => {
 			setUser(user);
 			setUsername("");
 			setPassword("");
+			navigate("/");
 		} catch (exception) {
 			console.log(exception);
 			notify("wrong username or password", "error");
@@ -107,54 +112,76 @@ const App = () => {
 	const handleLogout = () => {
 		window.localStorage.removeItem("loggedBloglistUser");
 		setUser(null);
+		navigate("/");
 	};
 
-	if (user === null) {
-		return (
-			<div>
-				<h2>Log In to Application</h2>
-				<Notification message={errorMessage} type={messageType} />
-				<form onSubmit={handleLogin}>
-					<div>
-						Username
-						<input
-							type="text"
-							value={username}
-							name="Username"
-							aria-label="username"
-							onChange={({ target }) => setUsername(target.value)}
-						/>
-					</div>
-					<div>
-						Password
-						<input
-							type="password"
-							value={password}
-							name="Password"
-							aria-label="password"
-							onChange={({ target }) => setPassword(target.value)}
-						/>
-					</div>
-					<button type="submit" className="login-button">Login</button>
-				</form>
-			</div>
-		);
-	}
+	const match = useMatch("/blogs/:id");
+	const matchedBlog = match
+		? blogs.find(blog => blog.id === match.params.id)
+		: null;
 
 	return (
 		<div>
+			<nav>
+				<Link to="/">Blogs</Link>
+				{user && <Link to="/blogs/new">New Blog</Link>}
+				{user
+					? <button onClick={handleLogout}>Logout</button>
+					: <Link to="/login">Login</Link>
+				}
+			</nav>
+
 			<h2>Blogs</h2>
 			<Notification message={errorMessage} type={messageType} />
-			<p>
-				{user.name} logged in
-				<button onClick={handleLogout}>Logout</button>
-			</p>
-			<Togglable buttonLabel="New Blog" ref={blogFormRef}>
-				<BlogForm createBlog={createBlog} />
-			</Togglable>
-			{[...blogs].sort((a, b) => b.likes - a.likes).map(blog =>
-				<Blog key={blog.id} blog={blog} handleLike={handleLike} handleDelete={handleDelete} user={user} />
-			)}
+
+			<Routes>
+				<Route
+					path="/login"
+					element={
+						user
+							? <Navigate replace to="/" />
+							: (
+								<LoginForm
+									handleLogin={handleLogin}
+									username={username}
+									password={password}
+									setUsername={setUsername}
+									setPassword={setPassword}
+								/>
+							)
+					}
+				/>
+				<Route
+					path="/blogs/new"
+					element={
+						user
+							? <BlogForm createBlog={createBlog} />
+							: <Navigate replace to="/login" />
+					}
+				/>
+				<Route
+					path="/blogs/:id"
+					element={
+						<Blog
+							blog={matchedBlog}
+							handleLike={handleLike}
+							handleDelete={handleDelete}
+							user={user}
+						/>
+					}
+				/>
+				<Route
+					path="/"
+					element={
+						<div>
+							{user && <p>{user.name} logged in</p>}
+							{[...blogs].sort((a, b) => b.likes - a.likes).map(blog =>
+								<BlogListItem key={blog.id} blog={blog} handleLike={handleLike} handleDelete={handleDelete} user={user} />
+							)}
+						</div>
+					}
+				/>
+			</Routes>
 		</div>
 	);
 };
