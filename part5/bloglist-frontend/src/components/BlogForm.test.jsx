@@ -1,30 +1,56 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { expect, test, vi } from "vitest";
-import BlogForm from "./BlogForm";
+import Blog from "./Blog";
 
-test("form calls createBlog with the right details on submit", async () => {
-	const createBlog = vi.fn();
+const blog = {
+	title: "Component testing is done with react-testing-library",
+	author: "Kalle Ilves",
+	url: "http://example.com",
+	likes: 5,
+	user: { username: "kalleilves", name: "Kalle Ilves" },
+};
+
+test("blog info and likes are shown, but no buttons, when no user is logged in", () => {
+	render(<Blog blog={blog} user={null} />);
+
+	screen.getByText("Component testing is done with react-testing-library", { exact: false });
+	expect(screen.getAllByText("Kalle Ilves", { exact: false }).length).toBeGreaterThan(0);
+	screen.getByText("http://example.com");
+	screen.getByText("likes 5", { exact: false });
+
+	expect(screen.queryByText("like")).toBeNull();
+	expect(screen.queryByText("remove")).toBeNull();
+});
+
+test("a logged in user who is not the creator sees only the like button", () => {
+	const loggedInUser = { username: "someoneelse", name: "Someone Else" };
+
+	render(<Blog blog={blog} user={loggedInUser} />);
+
+	screen.getByText("like");
+	expect(screen.queryByText("remove")).toBeNull();
+});
+
+test("the blog's creator also sees the delete button", () => {
+	const creator = { username: "kalleilves", name: "Kalle Ilves" };
+
+	render(<Blog blog={blog} user={creator} />);
+
+	screen.getByText("like");
+	screen.getByText("remove");
+});
+
+test("clicking the like button twice calls event handler twice", async () => {
+	const mockHandler = vi.fn();
+	const loggedInUser = { username: "someoneelse", name: "Someone Else" };
+
+	render(<Blog blog={blog} handleLike={mockHandler} user={loggedInUser} />);
 	const user = userEvent.setup();
 
-	render(<BlogForm createBlog={createBlog} />);
+	const likeButton = screen.getByText("like");
+	await user.click(likeButton);
+	await user.click(likeButton);
 
-	const inputs = screen.getAllByRole("textbox");
-	const titleInput = inputs[0];
-	const authorInput = inputs[1];
-	const urlInput = inputs[2];
-
-	const sendButton = screen.getByText("Create");
-
-	await user.type(titleInput, "testing a form...");
-	await user.type(authorInput, "test author");
-	await user.type(urlInput, "http://testurl.com");
-	await user.click(sendButton);
-
-	expect(createBlog.mock.calls).toHaveLength(1);
-	expect(createBlog.mock.calls[0][0]).toEqual({
-		title: "testing a form...",
-		author: "test author",
-		url: "http://testurl.com",
-	});
+	expect(mockHandler.mock.calls).toHaveLength(2);
 });
