@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Routes, Route, Link, Navigate, useNavigate, useMatch } from "react-router-dom";
+import { Container, AppBar, Toolbar, Button, Typography } from "@mui/material";
 import Blog from "./components/Blog";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
@@ -120,69 +121,84 @@ const App = () => {
 		? blogs.find(blog => blog.id === match.params.id)
 		: null;
 
+	const navButtonStyle = { "&:hover": { backgroundColor: "rgba(255,255,255,0.3)" } };
+
 	return (
-		<div>
-			<nav>
-				<Link to="/">Blogs</Link>
-				{user && <Link to="/blogs/new">New Blog</Link>}
-				{user
-					? <button onClick={handleLogout}>Logout</button>
-					: <Link to="/login">Login</Link>
-				}
-			</nav>
+		<Container>
+			<div>
+				<AppBar position="static" style={{ marginBottom: "20px" }}>
+					<Toolbar>
+						<Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
+							Blog App
+						</Typography>
 
-			<h2>Blogs</h2>
-			<Notification message={errorMessage} type={messageType} />
+						<Button color="inherit" component={Link} to="/" sx={navButtonStyle}>
+							Blogs
+						</Button>
+						{user && (
+							<Button color="inherit" component={Link} to="/blogs/new" sx={navButtonStyle}>
+								New Blog
+							</Button>
+						)}
+						{user
+							? <Button color="inherit" onClick={handleLogout} sx={navButtonStyle}>Logout</Button>
+							: <Button color="inherit" component={Link} to="/login" sx={navButtonStyle}>Login</Button>
+						}
+					</Toolbar>
+				</AppBar>
 
-			<Routes>
-				<Route
-					path="/login"
-					element={
-						user
-							? <Navigate replace to="/" />
-							: (
-								<LoginForm
-									handleLogin={handleLogin}
-									username={username}
-									password={password}
-									setUsername={setUsername}
-									setPassword={setPassword}
-								/>
-							)
-					}
-				/>
-				<Route
-					path="/blogs/new"
-					element={
-						user
-							? <BlogForm createBlog={createBlog} />
-							: <Navigate replace to="/login" />
-					}
-				/>
-				<Route
-					path="/blogs/:id"
-					element={
-						<Blog
-							blog={matchedBlog}
-							handleLike={handleLike}
-							handleDelete={handleDelete}
-							user={user}
-						/>
-					}
-				/>
-				<Route
-					path="/"
-					element={
-						<div>
-							{user && <p>{user.name} logged in</p>}
-							{[...blogs].sort((a, b) => b.likes - a.likes).map(blog =>
-								<BlogListItem key={blog.id} blog={blog} handleLike={handleLike} handleDelete={handleDelete} user={user} />
-							)}
-						</div>
-					}
-				/>
-			</Routes>
-		</div>
+				<Notification message={errorMessage} type={messageType} />
+
+				<Routes>
+					<Route
+						path="/login"
+						element={
+							user
+								? <Navigate replace to="/" />
+								: (
+									<LoginForm
+										handleLogin={handleLogin}
+										username={username}
+										password={password}
+										setUsername={setUsername}
+										setPassword={setPassword}
+									/>
+								)
+						}
+					/>
+					<Route
+						path="/blogs/new"
+						element={
+							user
+								? <BlogForm createBlog={createBlog} />
+								: <Navigate replace to="/login" />
+						}
+					/>
+					<Route
+						path="/blogs/:id"
+						element={
+							<Blog
+								blog={matchedBlog}
+								handleLike={handleLike}
+								handleDelete={handleDelete}
+								user={user}
+							/>
+						}
+					/>
+					<Route
+						path="/"
+						element={
+							<div>
+								{user && <p>{user.name} logged in</p>}
+								{[...blogs].sort((a, b) => b.likes - a.likes).map(blog =>
+									<BlogListItem key={blog.id} blog={blog} handleLike={handleLike} handleDelete={handleDelete} user={user} />
+								)}
+							</div>
+						}
+					/>
+				</Routes>
+			</div>
+		</Container>
 	);
 };
 
