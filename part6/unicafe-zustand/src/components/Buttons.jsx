@@ -1,12 +1,16 @@
+import { useFeedbackActions } from "../store";
+
 const Buttons = () => {
-  return (
-    <div>
-      <h2>give feedback</h2>
-      <button>good</button>
-      <button>neutral</button>
-      <button>bad</button>
-    </div>
-  )
+	const { addGood, addNeutral, addBad } = useFeedbackActions();
+
+	return (
+		<div>
+			<h2>give feedback</h2>
+			<button onClick={addGood}>good</button>
+			<button onClick={addNeutral}>neutral</button>
+			<button onClick={addBad}>bad</button>
+		</div>
+	)
 }
 
-export default Buttons
+export default Buttons;
