@@ -13,9 +13,7 @@ const getAll = async () => {
 const createNew = async (content) => {
 	const response = await fetch(baseUrl, {
 		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
+		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({ content, votes: 0 }),
 	});
 
