@@ -1,0 +1,69 @@
+{
+  "anecdotes": [
+    {
+      "content": "If it hurts, do it more often",
+      "id": "47145",
+      "votes": 5
+    },
+    {
+      "content": "Adding manpower to a late software project makes it later!",
+      "id": "21149",
+      "votes": 0
+    },
+    {
+      "content": "The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
+      "id": "69581",
+      "votes": 0
+    },
+    {
+      "content": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+      "id": "36975",
+      "votes": 3
+    },
+    {
+      "content": "Premature optimization is the root of all evil.",
+      "id": "25170",
+      "votes": 3
+    },
+    {
+      "content": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
+      "id": "98312",
+      "votes": 0
+    },
+    {
+      "content": "This is a new anecdote",
+      "votes": 0,
+      "id": "h9m32La"
+    },
+    {
+      "content": "Another new anecdote",
+      "votes": 3,
+      "id": "04W1-lX"
+    },
+    {
+      "content": "I want to see how this is going to work.",
+      "votes": 0,
+      "id": "0wSMgf7"
+    },
+    {
+      "content": "This is a anecdote that's pretty long.",
+      "votes": 0,
+      "id": "nqk8XAq"
+    },
+    {
+      "content": "This is a wrestling anecdote for the app.",
+      "votes": 9,
+      "id": "Q2p6eOV"
+    },
+    {
+      "content": "Testing out to see if it's working.",
+      "votes": 6,
+      "id": "U7fl8Ky"
+    },
+    {
+      "content": "Yes another new ancedote added.",
+      "votes": 9,
+      "id": "P3fac5z"
+    }
+  ]
+}
