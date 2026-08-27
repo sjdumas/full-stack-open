@@ -26,7 +26,12 @@ const LoginForm = ({
 						onChange={({ target }) => setPassword(target.value)}
 					/>
 				</div>
-				<Button type="submit" variant="contained" color="primary" style={{ marginTop: "10px" }}>
+				<Button
+					type="submit"
+					variant="contained"
+					color="primary"
+					style={{ marginTop: "10px" }}
+				>
 					Login
 				</Button>
 			</form>

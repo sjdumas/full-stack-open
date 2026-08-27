@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Link, Navigate, useNavigate, useMatch } from "react-router-dom";
+import {
+	Routes,
+	Route,
+	Link,
+	Navigate,
+	useNavigate,
+	useMatch,
+} from "react-router-dom";
 import { Container, AppBar, Toolbar, Button, Typography } from "@mui/material";
 import Blog from "./components/Blog";
 import blogService from "./services/blogs";
@@ -21,13 +28,12 @@ const App = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		blogService.getAll().then(blogs =>
-			setBlogs(blogs)
-		);
+		blogService.getAll().then((blogs) => setBlogs(blogs));
 	}, []);
 
 	useEffect(() => {
-		const loggedUserJSON = window.localStorage.getItem("loggedBloglistUser");
+		const loggedUserJSON =
+			window.localStorage.getItem("loggedBloglistUser");
 
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON);
@@ -69,7 +75,11 @@ const App = () => {
 				user: blog.user ? blog.user.id : null,
 			});
 
-			setBlogs(blogs.map(b => b.id === blog.id ? { ...updatedBlog, user: blog.user } : b));
+			setBlogs(
+				blogs.map((b) =>
+					b.id === blog.id ? { ...updatedBlog, user: blog.user } : b
+				)
+			);
 		} catch (exception) {
 			console.log(exception);
 			notify("updating blog failed", "error");
@@ -80,7 +90,7 @@ const App = () => {
 		if (window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
 			try {
 				await blogService.remove(blog.id);
-				setBlogs(blogs.filter(b => b.id !== blog.id));
+				setBlogs(blogs.filter((b) => b.id !== blog.id));
 				notify(`blog ${blog.title} removed`);
 				navigate("/");
 			} catch (exception) {
@@ -96,7 +106,10 @@ const App = () => {
 		try {
 			const user = await loginService.login({ username, password });
 
-			window.localStorage.setItem("loggedBloglistUser", JSON.stringify(user));
+			window.localStorage.setItem(
+				"loggedBloglistUser",
+				JSON.stringify(user)
+			);
 
 			blogService.setToken(user.token);
 			setUser(user);
@@ -117,32 +130,62 @@ const App = () => {
 
 	const match = useMatch("/blogs/:id");
 	const matchedBlog = match
-		? blogs.find(blog => blog.id === match.params.id)
+		? blogs.find((blog) => blog.id === match.params.id)
 		: null;
 
-	const navButtonStyle = { "&:hover": { backgroundColor: "rgba(255,255,255,0.3)" } };
+	const navButtonStyle = {
+		"&:hover": { backgroundColor: "rgba(255,255,255,0.3)" },
+	};
 
 	return (
 		<Container>
 			<div>
 				<AppBar position="static" style={{ marginBottom: "20px" }}>
 					<Toolbar>
-						<Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
+						<Typography
+							variant="h6"
+							component="div"
+							style={{ flexGrow: 1 }}
+						>
 							Blog App
 						</Typography>
 
-						<Button color="inherit" component={Link} to="/" sx={navButtonStyle}>
+						<Button
+							color="inherit"
+							component={Link}
+							to="/"
+							sx={navButtonStyle}
+						>
 							Blogs
 						</Button>
 						{user && (
-							<Button color="inherit" component={Link} to="/blogs/new" sx={navButtonStyle}>
+							<Button
+								color="inherit"
+								component={Link}
+								to="/blogs/new"
+								sx={navButtonStyle}
+							>
 								New Blog
 							</Button>
 						)}
-						{user
-							? <Button color="inherit" onClick={handleLogout} sx={navButtonStyle}>Logout</Button>
-							: <Button color="inherit" component={Link} to="/login" sx={navButtonStyle}>Login</Button>
-						}
+						{user ? (
+							<Button
+								color="inherit"
+								onClick={handleLogout}
+								sx={navButtonStyle}
+							>
+								Logout
+							</Button>
+						) : (
+							<Button
+								color="inherit"
+								component={Link}
+								to="/login"
+								sx={navButtonStyle}
+							>
+								Login
+							</Button>
+						)}
 					</Toolbar>
 				</AppBar>
 
@@ -153,25 +196,27 @@ const App = () => {
 						<Route
 							path="/login"
 							element={
-								user
-									? <Navigate replace to="/" />
-									: (
-										<LoginForm
-											handleLogin={handleLogin}
-											username={username}
-											password={password}
-											setUsername={setUsername}
-											setPassword={setPassword}
-										/>
-									)
+								user ? (
+									<Navigate replace to="/" />
+								) : (
+									<LoginForm
+										handleLogin={handleLogin}
+										username={username}
+										password={password}
+										setUsername={setUsername}
+										setPassword={setPassword}
+									/>
+								)
 							}
 						/>
 						<Route
 							path="/blogs/new"
 							element={
-								user
-									? <BlogForm createBlog={createBlog} />
-									: <Navigate replace to="/login" />
+								user ? (
+									<BlogForm createBlog={createBlog} />
+								) : (
+									<Navigate replace to="/login" />
+								)
 							}
 						/>
 						<Route
@@ -190,9 +235,17 @@ const App = () => {
 							element={
 								<div>
 									{user && <p>{user.name} logged in</p>}
-									{[...blogs].sort((a, b) => b.likes - a.likes).map(blog =>
-										<BlogListItem key={blog.id} blog={blog} handleLike={handleLike} handleDelete={handleDelete} user={user} />
-									)}
+									{[...blogs]
+										.sort((a, b) => b.likes - a.likes)
+										.map((blog) => (
+											<BlogListItem
+												key={blog.id}
+												blog={blog}
+												handleLike={handleLike}
+												handleDelete={handleDelete}
+												user={user}
+											/>
+										))}
 								</div>
 							}
 						/>

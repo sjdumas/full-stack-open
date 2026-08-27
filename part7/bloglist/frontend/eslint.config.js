@@ -29,7 +29,7 @@ export default [
 				{ allowConstantExport: true },
 			],
 			indent: ["error", "tab"],
-			"linebreak-style": ["error", "windows"],
+			"linebreak-style": ["error", "unix"],
 			quotes: ["error", "double"],
 			semi: ["error", "always"],
 			eqeqeq: "error",
