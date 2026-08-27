@@ -75,7 +75,9 @@ describe("when there is initially one user in db", () => {
 			.expect(400)
 			.expect("Content-Type", /application\/json/);
 
-		assert(result.body.error.includes("username and password are required"));
+		assert(
+			result.body.error.includes("username and password are required")
+		);
 
 		const usersAtEnd = await helper.usersInDb();
 		assert.strictEqual(usersAtEnd.length, usersAtStart.length);
@@ -95,7 +97,9 @@ describe("when there is initially one user in db", () => {
 			.expect(400)
 			.expect("Content-Type", /application\/json/);
 
-		assert(result.body.error.includes("username and password are required"));
+		assert(
+			result.body.error.includes("username and password are required")
+		);
 
 		const usersAtEnd = await helper.usersInDb();
 		assert.strictEqual(usersAtEnd.length, usersAtStart.length);

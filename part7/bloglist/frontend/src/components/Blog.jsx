@@ -5,7 +5,8 @@ const Blog = ({ blog, handleLike, handleDelete, user }) => {
 		return null;
 	}
 
-	const showDeleteButton = user && blog.user && user.username === blog.user.username;
+	const showDeleteButton =
+		user && blog.user && user.username === blog.user.username;
 
 	return (
 		<Card className="blog" style={{ marginTop: 10, maxWidth: 500 }}>
@@ -21,10 +22,19 @@ const Blog = ({ blog, handleLike, handleDelete, user }) => {
 					{blog.url}
 				</Typography>
 
-				<Stack direction="row" spacing={2} alignItems="center" style={{ marginTop: 15 }}>
+				<Stack
+					direction="row"
+					spacing={2}
+					alignItems="center"
+					style={{ marginTop: 15 }}
+				>
 					<Typography>likes {blog.likes}</Typography>
 					{user && (
-						<Button variant="outlined" size="small" onClick={() => handleLike(blog)}>
+						<Button
+							variant="outlined"
+							size="small"
+							onClick={() => handleLike(blog)}
+						>
 							like
 						</Button>
 					)}

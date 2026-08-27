@@ -14,8 +14,12 @@ const blog = {
 test("blog info and likes are shown, but no buttons, when no user is logged in", () => {
 	render(<Blog blog={blog} user={null} />);
 
-	screen.getByText("Component testing is done with react-testing-library", { exact: false });
-	expect(screen.getAllByText("Kalle Ilves", { exact: false }).length).toBeGreaterThan(0);
+	screen.getByText("Component testing is done with react-testing-library", {
+		exact: false,
+	});
+	expect(
+		screen.getAllByText("Kalle Ilves", { exact: false }).length
+	).toBeGreaterThan(0);
 	screen.getByText("http://example.com");
 	screen.getByText("likes 5", { exact: false });
 

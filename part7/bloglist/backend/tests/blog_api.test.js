@@ -78,7 +78,10 @@ describe("blog api", () => {
 				.expect("Content-Type", /application\/json/);
 
 			const blogsAtEnd = await helper.blogsInDb();
-			assert.strictEqual(blogsAtEnd.length, helper.initialBlogs.length + 1);
+			assert.strictEqual(
+				blogsAtEnd.length,
+				helper.initialBlogs.length + 1
+			);
 
 			const titles = blogsAtEnd.map((b) => b.title);
 			assert(titles.includes("Canonical string reduction"));
@@ -167,7 +170,10 @@ describe("blog api", () => {
 			const titles = blogsAtEnd.map((b) => b.title);
 			assert(!titles.includes(blogToDelete.title));
 
-			assert.strictEqual(blogsAtEnd.length, helper.initialBlogs.length - 1);
+			assert.strictEqual(
+				blogsAtEnd.length,
+				helper.initialBlogs.length - 1
+			);
 		});
 
 		test("fails with status 401 if token is not provided", async () => {
@@ -182,7 +188,10 @@ describe("blog api", () => {
 
 		test("fails with status 401 if a different user attempts the deletion", async () => {
 			const passwordHash = await bcrypt.hash("anotherpass", 10);
-			const otherUser = new User({ username: "blogapiintruder", passwordHash });
+			const otherUser = new User({
+				username: "blogapiintruder",
+				passwordHash,
+			});
 			await otherUser.save();
 
 			const loginResponse = await api
@@ -208,7 +217,10 @@ describe("blog api", () => {
 			const blogsAtStart = await helper.blogsInDb();
 			const blogToUpdate = blogsAtStart[0];
 
-			const updatedBlog = { ...blogToUpdate, likes: blogToUpdate.likes + 1 };
+			const updatedBlog = {
+				...blogToUpdate,
+				likes: blogToUpdate.likes + 1,
+			};
 
 			const response = await api
 				.put(`/api/blogs/${blogToUpdate.id}`)
