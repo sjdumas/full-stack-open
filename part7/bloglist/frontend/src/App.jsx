@@ -10,21 +10,20 @@ import {
 import { Container, AppBar, Toolbar, Button, Typography } from "@mui/material";
 import Blog from "./components/Blog";
 import blogService from "./services/blogs";
-import loginService from "./services/login";
 import Notification from "./components/Notification";
 import BlogForm from "./components/BlogForm";
 import LoginForm from "./components/LoginForm";
 import BlogListItem from "./components/BlogListItem";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { PageNotFound } from "./components/PageNotFound";
+import { useUser, useUserActions } from "./stores/userStore";
+import { useNotificationActions } from "./stores/notificationStore";
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
-	const [user, setUser] = useState(null);
-	const [errorMessage, setErrorMessage] = useState(null);
-	const [messageType, setMessageType] = useState("success");
+	const user = useUser();
+	const { initializeUser, logout } = useUserActions();
+	const { showNotification } = useNotificationActions();
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -32,23 +31,8 @@ const App = () => {
 	}, []);
 
 	useEffect(() => {
-		const loggedUserJSON =
-			window.localStorage.getItem("loggedBloglistUser");
-
-		if (loggedUserJSON) {
-			const user = JSON.parse(loggedUserJSON);
-			setUser(user);
-			blogService.setToken(user.token);
-		}
-	}, []);
-
-	const notify = (message, type = "success") => {
-		setErrorMessage(message);
-		setMessageType(type);
-		setTimeout(() => {
-			setErrorMessage(null);
-		}, 5000);
-	};
+		initializeUser();
+	}, [initializeUser]);
 
 	const createBlog = async (blogObject) => {
 		try {
@@ -60,10 +44,12 @@ const App = () => {
 			};
 
 			setBlogs(blogs.concat(blogWithUser));
-			notify(`a new blog ${newBlog.title} by ${newBlog.author} added`);
+			showNotification(
+				`a new blog ${newBlog.title} by ${newBlog.author} added`
+			);
 		} catch (exception) {
 			console.log(exception);
-			notify("creating blog failed", "error");
+			showNotification("creating blog failed", "error");
 		}
 	};
 
@@ -82,7 +68,7 @@ const App = () => {
 			);
 		} catch (exception) {
 			console.log(exception);
-			notify("updating blog failed", "error");
+			showNotification("updating blog failed", "error");
 		}
 	};
 
@@ -91,40 +77,17 @@ const App = () => {
 			try {
 				await blogService.remove(blog.id);
 				setBlogs(blogs.filter((b) => b.id !== blog.id));
-				notify(`blog ${blog.title} removed`);
+				showNotification(`blog ${blog.title} removed`);
 				navigate("/");
 			} catch (exception) {
 				console.log(exception);
-				notify("removing blog failed", "error");
+				showNotification("removing blog failed", "error");
 			}
 		}
 	};
 
-	const handleLogin = async (event) => {
-		event.preventDefault();
-
-		try {
-			const user = await loginService.login({ username, password });
-
-			window.localStorage.setItem(
-				"loggedBloglistUser",
-				JSON.stringify(user)
-			);
-
-			blogService.setToken(user.token);
-			setUser(user);
-			setUsername("");
-			setPassword("");
-			navigate("/");
-		} catch (exception) {
-			console.log(exception);
-			notify("wrong username or password", "error");
-		}
-	};
-
 	const handleLogout = () => {
-		window.localStorage.removeItem("loggedBloglistUser");
-		setUser(null);
+		logout();
 		navigate("/");
 	};
 
@@ -189,7 +152,7 @@ const App = () => {
 					</Toolbar>
 				</AppBar>
 
-				<Notification message={errorMessage} type={messageType} />
+				<Notification />
 
 				<ErrorBoundary>
 					<Routes>
@@ -199,13 +162,7 @@ const App = () => {
 								user ? (
 									<Navigate replace to="/" />
 								) : (
-									<LoginForm
-										handleLogin={handleLogin}
-										username={username}
-										password={password}
-										setUsername={setUsername}
-										setPassword={setPassword}
-									/>
+									<LoginForm />
 								)
 							}
 						/>
