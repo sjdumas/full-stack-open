@@ -1,6 +1,13 @@
 import { Alert } from "@mui/material";
+import {
+	useNotificationMessage,
+	useNotificationType,
+} from "../stores/notificationStore";
 
-const Notification = ({ message, type }) => {
+const Notification = () => {
+	const message = useNotificationMessage();
+	const type = useNotificationType();
+
 	if (message === null) {
 		return null;
 	}
