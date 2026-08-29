@@ -1,29 +1,25 @@
 import { create } from "zustand";
 import blogService from "../services/blogs";
+import persistentUser from "../services/persistentUser";
 
 export const useUserStore = create((set) => ({
 	user: null,
 	actions: {
 		setUser: (user) => set(() => ({ user })),
 		login: (user) => {
-			window.localStorage.setItem(
-				"loggedBloglistUser",
-				JSON.stringify(user)
-			);
+			persistentUser.saveUser(user);
 			blogService.setToken(user.token);
 			set(() => ({ user }));
 		},
 		logout: () => {
-			window.localStorage.removeItem("loggedBloglistUser");
+			persistentUser.removeUser();
 			blogService.setToken(null);
 			set(() => ({ user: null }));
 		},
 		initializeUser: () => {
-			const loggedUserJSON =
-				window.localStorage.getItem("loggedBloglistUser");
+			const user = persistentUser.getUser();
 
-			if (loggedUserJSON) {
-				const user = JSON.parse(loggedUserJSON);
+			if (user) {
 				blogService.setToken(user.token);
 				set(() => ({ user }));
 			}

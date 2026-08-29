@@ -1,25 +1,31 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import loginService from "../services/login";
 import { useUserActions } from "../stores/userStore";
 import { useNotificationActions } from "../stores/notificationStore";
+import { useField } from "../hooks";
 
 const LoginForm = () => {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+	const username = useField("text");
+	const password = useField("password");
 	const { login } = useUserActions();
 	const { showNotification } = useNotificationActions();
 	const navigate = useNavigate();
+
+	const { reset: resetUsername, ...usernameProps } = username;
+	const { reset: resetPassword, ...passwordProps } = password;
 
 	const handleLogin = async (event) => {
 		event.preventDefault();
 
 		try {
-			const user = await loginService.login({ username, password });
+			const user = await loginService.login({
+				username: username.value,
+				password: password.value,
+			});
 			login(user);
-			setUsername("");
-			setPassword("");
+			resetUsername();
+			resetPassword();
 			navigate("/");
 		} catch (exception) {
 			showNotification("wrong username or password", "error");
@@ -33,16 +39,13 @@ const LoginForm = () => {
 				<div>
 					<TextField
 						label="username"
-						value={username}
-						onChange={({ target }) => setUsername(target.value)}
+						{...usernameProps}
 					/>
 				</div>
 				<div>
 					<TextField
 						label="password"
-						type="password"
-						value={password}
-						onChange={({ target }) => setPassword(target.value)}
+						{...passwordProps}
 					/>
 				</div>
 				<Button

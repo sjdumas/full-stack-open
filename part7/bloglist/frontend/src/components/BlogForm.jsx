@@ -1,25 +1,29 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
+import { useField } from "../hooks";
 
 const BlogForm = ({ createBlog }) => {
-	const [title, setTitle] = useState("");
-	const [author, setAuthor] = useState("");
-	const [url, setUrl] = useState("");
+	const title = useField("text");
+	const author = useField("text");
+	const url = useField("text");
 	const navigate = useNavigate();
+
+	const { reset: resetTitle, ...titleProps } = title;
+	const { reset: resetAuthor, ...authorProps } = author;
+	const { reset: resetUrl, ...urlProps } = url;
 
 	const addBlog = (event) => {
 		event.preventDefault();
 
 		createBlog({
-			title,
-			author,
-			url,
+			title: title.value,
+			author: author.value,
+			url: url.value,
 		});
 
-		setTitle("");
-		setAuthor("");
-		setUrl("");
+		resetTitle();
+		resetAuthor();
+		resetUrl();
 		navigate("/");
 	};
 
@@ -30,22 +34,19 @@ const BlogForm = ({ createBlog }) => {
 				<div>
 					<TextField
 						label="title"
-						value={title}
-						onChange={({ target }) => setTitle(target.value)}
+						{...titleProps}
 					/>
 				</div>
 				<div>
 					<TextField
 						label="author"
-						value={author}
-						onChange={({ target }) => setAuthor(target.value)}
+						{...authorProps}
 					/>
 				</div>
 				<div>
 					<TextField
 						label="url"
-						value={url}
-						onChange={({ target }) => setUrl(target.value)}
+						{...urlProps}
 					/>
 				</div>
 				<Button type="submit" variant="contained" color="primary">
