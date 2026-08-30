@@ -55,6 +55,15 @@ const Blog = ({ blog, handleLike, handleDelete, user }) => {
 						remove
 					</Button>
 				)}
+
+				<Typography variant="h6" style={{ marginTop: 20 }}>
+					comments
+				</Typography>
+				<ul>
+					{blog.comments.map((comment, index) => (
+						<li key={index}>{comment}</li>
+					))}
+				</ul>
 			</CardContent>
 		</Card>
 	);
