@@ -1,12 +1,23 @@
-import { Card, CardContent, Typography, Button, Stack } from "@mui/material";
+import { Card, CardContent, Typography, Button, Stack, TextField } from "@mui/material";
+import { useField } from "../hooks";
 
-const Blog = ({ blog, handleLike, handleDelete, user }) => {
+const Blog = ({ blog, handleLike, handleDelete, handleComment, user }) => {
+	const comment = useField("text");
+
 	if (!blog) {
 		return null;
 	}
 
 	const showDeleteButton =
 		user && blog.user && user.username === blog.user.username;
+
+	const { reset: resetComment, ...commentProps } = comment;
+
+	const addComment = (event) => {
+		event.preventDefault();
+		handleComment(blog.id, comment.value);
+		resetComment();
+	};
 
 	return (
 		<Card className="blog" style={{ marginTop: 10, maxWidth: 500 }}>
@@ -59,6 +70,19 @@ const Blog = ({ blog, handleLike, handleDelete, user }) => {
 				<Typography variant="h6" style={{ marginTop: 20 }}>
 					comments
 				</Typography>
+
+				<form onSubmit={addComment} style={{ marginBottom: 10 }}>
+					<TextField
+						{...commentProps}
+						label="comment"
+						size="small"
+						style={{ marginRight: 10 }}
+					/>
+					<Button type="submit" variant="outlined" size="small">
+						add comment
+					</Button>
+				</form>
+
 				<ul>
 					{blog.comments.map((comment, index) => (
 						<li key={index}>{comment}</li>

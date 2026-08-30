@@ -26,7 +26,7 @@ const App = () => {
 	const { initializeUser, logout } = useUserActions();
 	const { showNotification } = useNotificationActions();
 	const blogs = useBlogs();
-	const { initializeBlogs, createBlog, likeBlog, deleteBlog } = useBlogActions();
+	const { initializeBlogs, createBlog, likeBlog, deleteBlog, commentBlog } = useBlogActions();
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -66,6 +66,15 @@ const App = () => {
 				console.log(exception);
 				showNotification("removing blog failed", "error");
 			}
+		}
+	};
+
+	const handleComment = async (id, comment) => {
+		try {
+			await commentBlog(id, comment);
+		} catch (exception) {
+			console.log(exception);
+			showNotification("adding comment failed", "error");
 		}
 	};
 
@@ -139,7 +148,15 @@ const App = () => {
 						/>
 						<Route
 							path="/blogs/:id"
-							element={<Blog blog={matchedBlog} handleLike={handleLike} handleDelete={handleDelete} user={user} />}
+							element={
+								<Blog
+									blog={matchedBlog}
+									handleLike={handleLike}
+									handleDelete={handleDelete}
+									handleComment={handleComment}
+									user={user}
+								/>
+							}
 						/>
 						<Route
 							path="/"
