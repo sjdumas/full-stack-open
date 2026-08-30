@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Paper, Stack, Typography } from "@mui/material";
 import { useField } from "../hooks";
 
 const BlogForm = ({ createBlog }) => {
@@ -28,32 +28,21 @@ const BlogForm = ({ createBlog }) => {
 	};
 
 	return (
-		<div>
-			<h2>Create New</h2>
+		<Paper style={{ padding: 24, maxWidth: 600, marginTop: 20 }}>
+			<Typography variant="h5" gutterBottom>
+				Create New
+			</Typography>
 			<form onSubmit={addBlog}>
-				<div>
-					<TextField
-						label="title"
-						{...titleProps}
-					/>
-				</div>
-				<div>
-					<TextField
-						label="author"
-						{...authorProps}
-					/>
-				</div>
-				<div>
-					<TextField
-						label="url"
-						{...urlProps}
-					/>
-				</div>
-				<Button type="submit" variant="contained" color="primary">
-					Create
-				</Button>
+				<Stack spacing={2}>
+					<TextField label="title" fullWidth {...titleProps} />
+					<TextField label="author" fullWidth {...authorProps} />
+					<TextField label="url" fullWidth {...urlProps} />
+					<Button type="submit" variant="contained" color="primary">
+						Create
+					</Button>
+				</Stack>
 			</form>
-		</div>
+		</Paper>
 	);
 };
 

@@ -89,7 +89,7 @@ const App = () => {
 		: null;
 
 	const navButtonStyle = {
-		"&:hover": { backgroundColor: "rgba(255,255,255,0.3)" },
+		"&:hover": { backgroundColor: "rgba(255,255,255,0.3)", color: "#ffffff" },
 	};
 
 	return (

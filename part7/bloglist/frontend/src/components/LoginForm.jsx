@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Paper, Stack, Typography } from "@mui/material";
 import loginService from "../services/login";
 import { useUserActions } from "../stores/userStore";
 import { useNotificationActions } from "../stores/notificationStore";
@@ -33,31 +33,20 @@ const LoginForm = () => {
 	};
 
 	return (
-		<div>
-			<h2>Log In to Application</h2>
+		<Paper style={{ padding: 24, maxWidth: 500, marginTop: 20 }}>
+			<Typography variant="h5" gutterBottom>
+				Log In to Application
+			</Typography>
 			<form onSubmit={handleLogin}>
-				<div>
-					<TextField
-						label="username"
-						{...usernameProps}
-					/>
-				</div>
-				<div>
-					<TextField
-						label="password"
-						{...passwordProps}
-					/>
-				</div>
-				<Button
-					type="submit"
-					variant="contained"
-					color="primary"
-					style={{ marginTop: "10px" }}
-				>
-					Login
-				</Button>
+				<Stack spacing={2}>
+					<TextField label="username" fullWidth {...usernameProps} />
+					<TextField label="password" fullWidth {...passwordProps} />
+					<Button type="submit" variant="contained" color="primary">
+						Login
+					</Button>
+				</Stack>
 			</form>
-		</div>
+		</Paper>
 	);
 };
 
