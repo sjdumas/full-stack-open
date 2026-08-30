@@ -14,6 +14,8 @@ import BlogForm from "./components/BlogForm";
 import LoginForm from "./components/LoginForm";
 import BlogListItem from "./components/BlogListItem";
 import ErrorBoundary from "./components/ErrorBoundary";
+import Users from "./components/Users";
+import UserPage from "./components/UserPage";
 import { PageNotFound } from "./components/PageNotFound";
 import { useUser, useUserActions } from "./stores/userStore";
 import { useNotificationActions } from "./stores/notificationStore";
@@ -93,6 +95,9 @@ const App = () => {
 						<Button color="inherit" component={Link} to="/" sx={navButtonStyle}>
 							Blogs
 						</Button>
+						<Button color="inherit" component={Link} to="/users" sx={navButtonStyle}>
+							Users
+						</Button>
 						{user && (
 							<Button color="inherit" component={Link} to="/blogs/new" sx={navButtonStyle}>
 								New Blog
@@ -129,6 +134,10 @@ const App = () => {
 							}
 						/>
 						<Route
+							path="/users"
+							element={<Users />}
+						/>
+						<Route
 							path="/blogs/:id"
 							element={<Blog blog={matchedBlog} handleLike={handleLike} handleDelete={handleDelete} user={user} />}
 						/>
@@ -145,6 +154,7 @@ const App = () => {
 								</div>
 							}
 						/>
+						<Route path="/users/:id" element={<UserPage />} />
 						<Route path="*" element={<PageNotFound />} />
 					</Routes>
 				</ErrorBoundary>
