@@ -4,8 +4,9 @@ const BlogListItem = ({ blog }) => {
 	const blogStyle = {
 		border: "solid",
 		borderWidth: 1,
-		marginBottom: 5,
+		marginBottom: 10,
 		padding: 5,
+		borderColor: "#d4d4d4"
 	};
 
 	return (

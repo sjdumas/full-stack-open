@@ -20,7 +20,7 @@ const Blog = ({ blog, handleLike, handleDelete, handleComment, user }) => {
 	};
 
 	return (
-		<Card className="blog" style={{ marginTop: 10, maxWidth: 500 }}>
+		<Card className="blog" style={{ marginTop: 10 }}>
 			<CardContent>
 				<Typography variant="h5" component="h2">
 					{blog.title}
@@ -71,16 +71,13 @@ const Blog = ({ blog, handleLike, handleDelete, handleComment, user }) => {
 					comments
 				</Typography>
 
-				<form onSubmit={addComment} style={{ marginBottom: 10 }}>
-					<TextField
-						{...commentProps}
-						label="comment"
-						size="small"
-						style={{ marginRight: 10 }}
-					/>
-					<Button type="submit" variant="outlined" size="small">
-						add comment
-					</Button>
+				<form onSubmit={addComment}>
+					<Stack direction="row" spacing={1} alignItems="center" style={{ marginBottom: 10 }}>
+						<TextField {...commentProps} label="comment" size="small" fullWidth />
+						<Button type="submit" variant="outlined" size="small" style={{ flexShrink: 0 }}>
+							add comment
+						</Button>
+					</Stack>
 				</form>
 
 				<ul>

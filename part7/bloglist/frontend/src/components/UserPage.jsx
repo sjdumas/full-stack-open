@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Typography, List, ListItem, ListItemText } from "@mui/material";
 import usersService from "../services/users";
 
 const UserPage = () => {
@@ -18,13 +19,17 @@ const UserPage = () => {
 
 	return (
 		<div>
-			<h2>{user.name}</h2>
-			<h3>added blogs</h3>
-			<ul>
+			<Typography variant="h5">{user.name}</Typography>
+			<Typography variant="h6" style={{ marginTop: 15 }}>
+				added blogs
+			</Typography>
+			<List dense sx={{ listStyleType: "disc", pl: 4 }}>
 				{user.blogs.map((blog) => (
-					<li key={blog.id}>{blog.title}</li>
+					<ListItem key={blog.id} sx={{ display: "list-item", pl: 0 }}>
+						<ListItemText primary={blog.title} />
+					</ListItem>
 				))}
-			</ul>
+			</List>
 		</div>
 	);
 };
