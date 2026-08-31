@@ -25,6 +25,7 @@ This repository contains my exercises and projects from the University of Helsin
 - [Part 5](part5/README.md): Testing React applications and React Router
 - [Part 6](part6/README.md): Advanced state management
 - [Part 7](part7/README.md): Custom hooks and esbuild
+- [Part 8](part8/README.md): GraphQL
 
 ## Additional Projects
 
