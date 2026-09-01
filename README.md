@@ -30,3 +30,4 @@ This repository contains my exercises and projects from the University of Helsin
 ## Additional Projects
 
 - [Phonebook backend for Part 3 on GitHub](https://github.com/sjdumas/phonebook-backend)
+# fso-graphql
