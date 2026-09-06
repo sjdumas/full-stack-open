@@ -26,8 +26,9 @@ This repository contains my exercises and projects from the University of Helsin
 - [Part 6](part6/README.md): Advanced state management
 - [Part 7](part7/README.md): Custom hooks and esbuild
 - [Part 8](part8/README.md): GraphQL
+- [Part 9](part9/README.md): TypeScript
 
 ## Additional Projects
 
 - [Phonebook backend for Part 3 on GitHub](https://github.com/sjdumas/phonebook-backend)
-# fso-graphql
+- [GraphQL frontend and backend for Part 8 on GitHub](https://github.com/sjdumas/fso-graphql)
