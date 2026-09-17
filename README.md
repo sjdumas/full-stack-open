@@ -27,8 +27,10 @@ This repository contains my exercises and projects from the University of Helsin
 - [Part 7](part7/README.md): Custom hooks and esbuild
 - [Part 8](part8/README.md): GraphQL
 - [Part 9](part9/README.md): TypeScript
+- [Part 10](part10/README.md): React Native
 
 ## Additional Projects
 
 - [Phonebook backend for Part 3 on GitHub](https://github.com/sjdumas/phonebook-backend)
 - [GraphQL frontend and backend for Part 8 on GitHub](https://github.com/sjdumas/fso-graphql)
+- [TypeScript projects for Part 9 on GitHub](https://github.com/sjdumas/fso-typescript)
