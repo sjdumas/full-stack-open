@@ -1,4 +1,6 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
+import Text from "./Text";
+import theme from "../theme";
 
 const styles = StyleSheet.create({
 	container: {
@@ -7,7 +9,7 @@ const styles = StyleSheet.create({
 	},
 	topRow: {
 		flexDirection: "row",
-		marginBottom: 10,
+		marginBottom: 15,
 	},
 	avatar: {
 		width: 50,
@@ -19,32 +21,26 @@ const styles = StyleSheet.create({
 		flexShrink: 1,
 	},
 	fullName: {
-		fontWeight: "bold",
-		fontSize: 16,
 		marginBottom: 5,
 	},
 	description: {
-		color: "grey",
 		marginBottom: 5,
 	},
 	language: {
 		alignSelf: "flex-start",
-		backgroundColor: "#0366d6",
-		color: "#ffffff",
+		backgroundColor: theme.colors.primary,
+		color: "white",
 		paddingHorizontal: 8,
 		paddingVertical: 3,
 		borderRadius: 5,
 		overflow: "hidden",
 	},
-	statusRow: {
+	statsRow: {
 		flexDirection: "row",
 		justifyContent: "space-around",
 	},
 	statItem: {
 		alignItems: "center",
-	},
-	statCount: {
-		fontWeight: "bold",
 	},
 });
 
@@ -55,42 +51,42 @@ const formatCount = (count) => {
 	return count.toString();
 };
 
+const RepositoryItemHeader = ({ repository }) => (
+	<View style={styles.topRow}>
+		<Image style={styles.avatar} source={{ uri: repository.ownerAvatarUrl }} />
+		<View style={styles.infoContainer}>
+			<Text style={styles.fullName} fontWeight="bold">
+				{repository.fullName}
+			</Text>
+			<Text style={styles.description} color="textSecondary">
+				{repository.description}
+			</Text>
+			<Text style={styles.language}>{repository.language}</Text>
+		</View>
+	</View>
+);
+
+const CountStat = ({ label, count }) => (
+	<View style={styles.statItem}>
+		<Text fontWeight="bold">{formatCount(count)}</Text>
+		<Text color="textSecondary">{label}</Text>
+	</View>
+);
+
+const RepositoryItemStats = ({ repository }) => (
+	<View style={styles.statsRow}>
+		<CountStat label="Stars" count={repository.stargazersCount} />
+		<CountStat label="Forks" count={repository.forksCount} />
+		<CountStat label="Reviews" count={repository.reviewCount} />
+		<CountStat label="Rating" count={repository.ratingAverage} />
+	</View>
+);
+
 const RepositoryItem = ({ repository }) => {
 	return (
-		<View style={styles.container}>
-			<View style={styles.topRow}>
-				<Image
-					style={styles.avatar}
-					source={{ uri: repository.ownerAvatarUrl }}
-				/>
-				<View style={styles.infoContainer}>
-					<Text style={styles.fullName}>{repository.fullName}</Text>
-					<Text style={styles.description}>{repository.description}</Text>
-					<Text style={styles.language}>{repository.language}</Text>
-				</View>
-			</View>
-			<View style={styles.statsRow}>
-				<View style={styles.statItem}>
-					<Text style={styles.statCount}>
-						{formatCount(repository.stargazersCount)}
-					</Text>
-					<Text>Stars</Text>
-				</View>
-				<View style={styles.statItem}>
-					<Text style={styles.statCount}>
-						{formatCount(repository.forksCount)}
-					</Text>
-					<Text>Forks</Text>
-				</View>
-				<View style={styles.statItem}>
-					<Text style={styles.statCount}>{repository.reviewCount}</Text>
-					<Text>Reviews</Text>
-				</View>
-				<View style={styles.statItem}>
-					<Text style={styles.statCount}>{repository.ratingAverage}</Text>
-					<Text>Rating</Text>
-				</View>
-			</View>
+		<View style={styles.container} testID="repositoryItem">
+			<RepositoryItemHeader repository={repository} />
+			<RepositoryItemStats repository={repository} />
 		</View>
 	);
 };
