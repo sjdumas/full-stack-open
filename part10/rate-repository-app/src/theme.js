@@ -5,6 +5,7 @@ const theme = {
 		textPrimary: "#24292e",
 		textSecondary: "#586069",
 		background: "#e1e4e8",
+		error: "#d73a4a",
 	},
 	fontWeights: {
 		normal: "400",
