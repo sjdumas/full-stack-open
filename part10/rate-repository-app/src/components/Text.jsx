@@ -4,6 +4,7 @@ import theme from "../theme";
 const styles = StyleSheet.create({
 	text: {
 		color: theme.colors.textPrimary,
+		fontFamily: theme.fonts.main,
 	},
 	colorTextSecondary: {
 		color: theme.colors.textSecondary,
