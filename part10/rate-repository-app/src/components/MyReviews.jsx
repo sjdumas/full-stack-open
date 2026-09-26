@@ -1,6 +1,6 @@
 import { FlatList, View, StyleSheet } from "react-native";
 import useMyReviews from "../hooks/useMyReviews";
-import ReviewItem from "./ReviewItem";
+import MyReviewItem from "./MyReviewItem";
 
 const styles = StyleSheet.create({
 	separator: {
@@ -11,13 +11,15 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const MyReviews = () => {
-	const { reviews } = useMyReviews();
+	const { reviews, refetch } = useMyReviews();
 
 	return (
 		<FlatList
 			data={reviews ?? []}
 			ItemSeparatorComponent={ItemSeparator}
-			renderItem={({ item }) => <ReviewItem review={item} showRepositoryName />}
+			renderItem={({ item }) => (
+				<MyReviewItem review={item} onDeleted={refetch} />
+			)}
 			keyExtractor={({ id }) => id}
 		/>
 	);
