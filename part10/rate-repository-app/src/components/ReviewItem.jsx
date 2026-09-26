@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 	},
 });
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, showRepositoryName = false }) => {
 	return (
 		<View style={styles.container} testID="reviewItem">
 			<View style={styles.ratingContainer}>
@@ -45,7 +45,7 @@ const ReviewItem = ({ review }) => {
 			</View>
 			<View style={styles.infoContainer}>
 				<Text fontWeight="bold" style={styles.username}>
-					{review.user.username}
+					{showRepositoryName ? review.repository.fullName : review.user.username}
 				</Text>
 				<Text style={styles.date}>
 					{format(new Date(review.createdAt), "dd MMM yyyy")}
