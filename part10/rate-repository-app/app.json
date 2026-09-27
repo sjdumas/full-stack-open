@@ -24,6 +24,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2bf77d21-b80a-4aa8-8768-553171645520"
+      }
+    },
+    "owner": "sjdumass-team",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2bf77d21-b80a-4aa8-8768-553171645520"
     }
   }
 }
