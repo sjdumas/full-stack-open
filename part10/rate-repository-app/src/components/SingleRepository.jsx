@@ -14,9 +14,9 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const SingleRepository = () => {
 	const { id } = useParams();
-	const { repository, loading } = useRepository(id);
+	const { repository, loading, fetchMore } = useRepository(id, 4);
 
-	if (loading) {
+	if (loading && !repository) {
 		return <ActivityIndicator size="large" />;
 	}
 
@@ -28,6 +28,10 @@ const SingleRepository = () => {
 		? repository.reviews.edges.map((edge) => edge.node)
 		: [];
 
+	const onEndReach = () => {
+		fetchMore();
+	};
+
 	return (
 		<FlatList
 			data={reviewNodes}
@@ -37,6 +41,8 @@ const SingleRepository = () => {
 			ListHeaderComponent={() => (
 				<RepositoryItem repository={repository} showGithubButton />
 			)}
+			onEndReached={onEndReach}
+			onEndReachedThreshold={0.5}
 		/>
 	);
 };
