@@ -14,6 +14,7 @@ This repository contains my exercises and projects from the University of Helsin
 - Testing
 - GraphQL
 - TypeScript
+- Continuous integration and deployment
 
 ## Repository Structure
 
@@ -28,9 +29,11 @@ This repository contains my exercises and projects from the University of Helsin
 - [Part 8](part8/README.md): GraphQL
 - [Part 9](part9/README.md): TypeScript
 - [Part 10](part10/README.md): React Native
+- [Part 11](part11/README.md): Continuous integration and deployment
 
 ## Additional Projects
 
 - [Phonebook backend for Part 3 on GitHub](https://github.com/sjdumas/phonebook-backend)
 - [GraphQL frontend and backend for Part 8 on GitHub](https://github.com/sjdumas/fso-graphql)
 - [TypeScript projects for Part 9 on GitHub](https://github.com/sjdumas/fso-typescript)
+- [CI/CD project for Part 11 on GitHub](https://github.com/sjdumas/fs-pokedex)
