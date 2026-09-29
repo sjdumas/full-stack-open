@@ -4,4 +4,4 @@ This directory contains the assignments for the University of Helsinki [Full Sta
 
 ## GitHub
 
-[FS Pokedex](https://github.com/sjdumas/fso-pokedex)
+[FSO Pokedex](https://github.com/sjdumas/fso-pokedex)
