@@ -36,4 +36,4 @@ This repository contains my exercises and projects from the University of Helsin
 - [Phonebook backend for Part 3 on GitHub](https://github.com/sjdumas/phonebook-backend)
 - [GraphQL frontend and backend for Part 8 on GitHub](https://github.com/sjdumas/fso-graphql)
 - [TypeScript projects for Part 9 on GitHub](https://github.com/sjdumas/fso-typescript)
-- [CI/CD project for Part 11 on GitHub](https://github.com/sjdumas/fs-pokedex)
+- [CI/CD project for Part 11 on GitHub](https://github.com/sjdumas/fso-pokedex)
