@@ -14,7 +14,8 @@ This repository contains my exercises and projects from the University of Helsin
 - Testing
 - GraphQL
 - TypeScript
-- Continuous integration and deployment
+- React Native
+- Continuous integration and deployment (CI/CD)
 
 ## Repository Structure
 
@@ -29,7 +30,7 @@ This repository contains my exercises and projects from the University of Helsin
 - [Part 8](part8/README.md): GraphQL
 - [Part 9](part9/README.md): TypeScript
 - [Part 10](part10/README.md): React Native
-- [Part 11](part11/README.md): Continuous integration and deployment
+- [Part 11](part11/README.md): CI/CD
 
 ## Additional Projects
 
