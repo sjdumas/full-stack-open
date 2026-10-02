@@ -1,7 +1,7 @@
 # Part 11
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part11](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-continuous-integration).
+This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 11](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-continuous-integration).
 
 ## GitHub
 
-[FSO Pokedex](https://github.com/sjdumas/fso-pokedex)
+[Pokedex](https://github.com/sjdumas/fso-pokedex)
