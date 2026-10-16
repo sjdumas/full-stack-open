@@ -47,4 +47,5 @@ This repository contains my exercises and projects from the University of Helsin
 - [TypeScript projects for Part 9 on GitHub](https://github.com/sjdumas/fso-typescript)
 - [Pokedex CI/CD project for Part 11 on GitHub](https://github.com/sjdumas/fso-pokedex)
 - [Phonebook CI/CD project for Part 11 on GitHub](https://github.com/sjdumas/fso-phonebook)
+- [Containers project for Part 12 on GitHub](https://github.com/sjdumas/fso-containers)
 - [Blog application for Part 13 on GitHub](https://github.com/sjdumas/fso-blog)
