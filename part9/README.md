@@ -4,4 +4,6 @@ This directory contains the assignments for the University of Helsinki [Full Sta
 
 ## GitHub
 
-[TypeScript projects](https://github.com/sjdumas/fso-typescript)
+This is the project GitHub repo link for all exercises in Part 9.
+
+- [TypeScript projects](https://github.com/sjdumas/fso-typescript)

@@ -4,6 +4,6 @@ This directory contains the assignments for the University of Helsinki [Full Sta
 
 ## GitHub
 
-This is the project GitHub repo link for all exercises in Part 13 of the Relational Database course.
+This is the project GitHub repo link for all exercises in Part 13.
 
 - [Blog application](https://github.com/sjdumas/fso-blog)

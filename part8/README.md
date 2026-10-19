@@ -4,4 +4,6 @@ This directory contains the assignments for the University of Helsinki [Full Sta
 
 ## GitHub
 
-[GraphQL frontend and backend](https://github.com/sjdumas/fso-graphql)
+This is the project GitHub repo link for all exercises in Part 8.
+
+- [GraphQL frontend and backend](https://github.com/sjdumas/fso-graphql)

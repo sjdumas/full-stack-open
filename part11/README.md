@@ -4,7 +4,7 @@ This directory contains the assignments for the University of Helsinki [Full Sta
 
 ## GitHub
 
-These are the project GitHub repo links for all exercises in Part 11 of the CI/CD course.
+These are the project GitHub repo links for all exercises in Part 11.
 
 - [Pokedex](https://github.com/sjdumas/fso-pokedex)
 - [Phonebook](https://github.com/sjdumas/fso-phonebook)
