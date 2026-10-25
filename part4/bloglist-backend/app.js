@@ -18,13 +18,13 @@ const app = express();
 logger.info("connecting to", config.MONGODB_URI);
 
 mongoose
-	.connect(config.MONGODB_URI, { family: 4 })
-	.then(() => {
-		logger.info("connected to MongoDB");
-	})
-	.catch((error) => {
-		logger.error("error connecting to MongoDB:", error.message);
-	});
+  .connect(config.MONGODB_URI, { family: 4 })
+  .then(() => {
+    logger.info("connected to MongoDB");
+  })
+  .catch((error) => {
+    logger.error("error connecting to MongoDB:", error.message);
+  });
 
 app.use(express.json());
 app.use(middleware.requestLogger);
@@ -35,8 +35,8 @@ app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
 
 if (process.env.NODE_ENV === "test") {
-	const testingRouter = require("./controllers/testing");
-	app.use("/api/testing", testingRouter);
+  const testingRouter = require("./controllers/testing");
+  app.use("/api/testing", testingRouter);
 }
 
 app.use(middleware.unknownEndpoint);

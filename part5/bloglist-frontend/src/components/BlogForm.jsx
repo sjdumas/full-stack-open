@@ -3,57 +3,57 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 
 const BlogForm = ({ createBlog }) => {
-	const [title, setTitle] = useState("");
-	const [author, setAuthor] = useState("");
-	const [url, setUrl] = useState("");
-	const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [url, setUrl] = useState("");
+  const navigate = useNavigate();
 
-	const addBlog = (event) => {
-		event.preventDefault();
+  const addBlog = (event) => {
+    event.preventDefault();
 
-		createBlog({
-			title,
-			author,
-			url,
-		});
+    createBlog({
+      title,
+      author,
+      url,
+    });
 
-		setTitle("");
-		setAuthor("");
-		setUrl("");
-		navigate("/");
-	};
+    setTitle("");
+    setAuthor("");
+    setUrl("");
+    navigate("/");
+  };
 
-	return (
-		<div>
-			<h2>Create New</h2>
-			<form onSubmit={addBlog}>
-				<div>
-					<TextField
-						label="title"
-						value={title}
-						onChange={({ target }) => setTitle(target.value)}
-					/>
-				</div>
-				<div>
-					<TextField
-						label="author"
-						value={author}
-						onChange={({ target }) => setAuthor(target.value)}
-					/>
-				</div>
-				<div>
-					<TextField
-						label="url"
-						value={url}
-						onChange={({ target }) => setUrl(target.value)}
-					/>
-				</div>
-				<Button type="submit" variant="contained" color="primary">
-					Create
-				</Button>
-			</form>
-		</div>
-	);
+  return (
+    <div>
+      <h2>Create New</h2>
+      <form onSubmit={addBlog}>
+        <div>
+          <TextField
+            label="title"
+            value={title}
+            onChange={({ target }) => setTitle(target.value)}
+          />
+        </div>
+        <div>
+          <TextField
+            label="author"
+            value={author}
+            onChange={({ target }) => setAuthor(target.value)}
+          />
+        </div>
+        <div>
+          <TextField
+            label="url"
+            value={url}
+            onChange={({ target }) => setUrl(target.value)}
+          />
+        </div>
+        <Button type="submit" variant="contained" color="primary">
+          Create
+        </Button>
+      </form>
+    </div>
+  );
 };
 
 export default BlogForm;

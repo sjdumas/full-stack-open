@@ -3,53 +3,53 @@ import { Text, TextInput, Pressable, View } from "react-native";
 import { render, fireEvent } from "@testing-library/react-native";
 
 const Form = ({ onSubmit }) => {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-	const handleSubmit = () => {
-		onSubmit({ username, password });
-	};
+  const handleSubmit = () => {
+    onSubmit({ username, password });
+  };
 
-	return (
-		<View>
-			<View>
-				<TextInput
-					value={username}
-					onChangeText={(text) => setUsername(text)}
-					placeholder="Username"
-				/>
-			</View>
-			<View>
-				<TextInput
-					value={password}
-					onChangeText={(text) => setPassword(text)}
-					placeholder="Password"
-				/>
-			</View>
-			<View>
-				<Pressable onPress={handleSubmit}>
-					<Text>Submit</Text>
-				</Pressable>
-			</View>
-		</View>
-	);
+  return (
+    <View>
+      <View>
+        <TextInput
+          value={username}
+          onChangeText={(text) => setUsername(text)}
+          placeholder="Username"
+        />
+      </View>
+      <View>
+        <TextInput
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          placeholder="Password"
+        />
+      </View>
+      <View>
+        <Pressable onPress={handleSubmit}>
+          <Text>Submit</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
 };
 
 describe("Form", () => {
-	it("calls function provided by onSubmit prop after pressing the submit button", async () => {
-		const onSubmit = jest.fn();
-		const { getByPlaceholderText, getByText } = await render(
-			<Form onSubmit={onSubmit} />
-		);
+  it("calls function provided by onSubmit prop after pressing the submit button", async () => {
+    const onSubmit = jest.fn();
+    const { getByPlaceholderText, getByText } = await render(
+      <Form onSubmit={onSubmit} />
+    );
 
-		await fireEvent.changeText(getByPlaceholderText("Username"), "kalle");
-		await fireEvent.changeText(getByPlaceholderText("Password"), "password");
-		await fireEvent.press(getByText("Submit"));
+    await fireEvent.changeText(getByPlaceholderText("Username"), "kalle");
+    await fireEvent.changeText(getByPlaceholderText("Password"), "password");
+    await fireEvent.press(getByText("Submit"));
 
-		expect(onSubmit).toHaveBeenCalledTimes(1);
-		expect(onSubmit.mock.calls[0][0]).toEqual({
-			username: "kalle",
-			password: "password",
-		});
-	});
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit.mock.calls[0][0]).toEqual({
+      username: "kalle",
+      password: "password",
+    });
+  });
 });

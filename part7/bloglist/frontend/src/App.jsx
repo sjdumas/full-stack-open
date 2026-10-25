@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import {
-	Routes,
-	Route,
-	Link,
-	Navigate,
-	useNavigate,
-	useMatch,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+  useNavigate,
+  useMatch,
 } from "react-router-dom";
 import { Container, AppBar, Toolbar, Button, Typography } from "@mui/material";
 import Blog from "./components/Blog";
@@ -22,162 +22,162 @@ import { useNotificationActions } from "./stores/notificationStore";
 import { useBlogs, useBlogActions } from "./stores/blogStore";
 
 const App = () => {
-	const user = useUser();
-	const { initializeUser, logout } = useUserActions();
-	const { showNotification } = useNotificationActions();
-	const blogs = useBlogs();
-	const { initializeBlogs, createBlog, likeBlog, deleteBlog, commentBlog } = useBlogActions();
-	const navigate = useNavigate();
+  const user = useUser();
+  const { initializeUser, logout } = useUserActions();
+  const { showNotification } = useNotificationActions();
+  const blogs = useBlogs();
+  const { initializeBlogs, createBlog, likeBlog, deleteBlog, commentBlog } = useBlogActions();
+  const navigate = useNavigate();
 
-	useEffect(() => {
-		initializeBlogs();
-	}, [initializeBlogs]);
+  useEffect(() => {
+    initializeBlogs();
+  }, [initializeBlogs]);
 
-	useEffect(() => {
-		initializeUser();
-	}, [initializeUser]);
+  useEffect(() => {
+    initializeUser();
+  }, [initializeUser]);
 
-	const handleCreate = async (blogObject) => {
-		try {
-			const newBlog = await createBlog(blogObject, user);
-			showNotification(`a new blog ${newBlog.title} by ${newBlog.author} added`);
-		} catch (exception) {
-			console.log(exception);
-			showNotification("creating blog failed", "error");
-		}
-	};
+  const handleCreate = async (blogObject) => {
+    try {
+      const newBlog = await createBlog(blogObject, user);
+      showNotification(`a new blog ${newBlog.title} by ${newBlog.author} added`);
+    } catch (exception) {
+      console.log(exception);
+      showNotification("creating blog failed", "error");
+    }
+  };
 
-	const handleLike = async (blog) => {
-		try {
-			await likeBlog(blog);
-		} catch (exception) {
-			console.log(exception);
-			showNotification("updating blog failed", "error");
-		}
-	};
+  const handleLike = async (blog) => {
+    try {
+      await likeBlog(blog);
+    } catch (exception) {
+      console.log(exception);
+      showNotification("updating blog failed", "error");
+    }
+  };
 
-	const handleDelete = async (blog) => {
-		if (window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
-			try {
-				await deleteBlog(blog);
-				showNotification(`blog ${blog.title} removed`);
-				navigate("/");
-			} catch (exception) {
-				console.log(exception);
-				showNotification("removing blog failed", "error");
-			}
-		}
-	};
+  const handleDelete = async (blog) => {
+    if (window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
+      try {
+        await deleteBlog(blog);
+        showNotification(`blog ${blog.title} removed`);
+        navigate("/");
+      } catch (exception) {
+        console.log(exception);
+        showNotification("removing blog failed", "error");
+      }
+    }
+  };
 
-	const handleComment = async (id, comment) => {
-		try {
-			await commentBlog(id, comment);
-		} catch (exception) {
-			console.log(exception);
-			showNotification("adding comment failed", "error");
-		}
-	};
+  const handleComment = async (id, comment) => {
+    try {
+      await commentBlog(id, comment);
+    } catch (exception) {
+      console.log(exception);
+      showNotification("adding comment failed", "error");
+    }
+  };
 
-	const handleLogout = () => {
-		logout();
-		navigate("/");
-	};
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
-	const match = useMatch("/blogs/:id");
-	const matchedBlog = match
-		? blogs.find((blog) => blog.id === match.params.id)
-		: null;
+  const match = useMatch("/blogs/:id");
+  const matchedBlog = match
+    ? blogs.find((blog) => blog.id === match.params.id)
+    : null;
 
-	const navButtonStyle = {
-		"&:hover": { backgroundColor: "rgba(255,255,255,0.3)", color: "#ffffff" },
-	};
+  const navButtonStyle = {
+    "&:hover": { backgroundColor: "rgba(255,255,255,0.3)", color: "#ffffff" },
+  };
 
-	return (
-		<Container>
-			<div>
-				<AppBar position="static" style={{ marginBottom: "20px" }}>
-					<Toolbar>
-						<Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
-							Blog App
-						</Typography>
+  return (
+    <Container>
+      <div>
+        <AppBar position="static" style={{ marginBottom: "20px" }}>
+          <Toolbar>
+            <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
+              Blog App
+            </Typography>
 
-						<Button color="inherit" component={Link} to="/" sx={navButtonStyle}>
-							Blogs
-						</Button>
-						<Button color="inherit" component={Link} to="/users" sx={navButtonStyle}>
-							Users
-						</Button>
-						{user && (
-							<Button color="inherit" component={Link} to="/blogs/new" sx={navButtonStyle}>
-								New Blog
-							</Button>
-						)}
-						{user ? (
-							<Button color="inherit" onClick={handleLogout} sx={navButtonStyle}>
-								Logout
-							</Button>
-						) : (
-							<Button color="inherit" component={Link} to="/login" sx={navButtonStyle}>
-								Login
-							</Button>
-						)}
-					</Toolbar>
-				</AppBar>
+            <Button color="inherit" component={Link} to="/" sx={navButtonStyle}>
+              Blogs
+            </Button>
+            <Button color="inherit" component={Link} to="/users" sx={navButtonStyle}>
+              Users
+            </Button>
+            {user && (
+              <Button color="inherit" component={Link} to="/blogs/new" sx={navButtonStyle}>
+                New Blog
+              </Button>
+            )}
+            {user ? (
+              <Button color="inherit" onClick={handleLogout} sx={navButtonStyle}>
+                Logout
+              </Button>
+            ) : (
+              <Button color="inherit" component={Link} to="/login" sx={navButtonStyle}>
+                Login
+              </Button>
+            )}
+          </Toolbar>
+        </AppBar>
 
-				<Notification />
+        <Notification />
 
-				<ErrorBoundary>
-					<Routes>
-						<Route
-							path="/login"
-							element={user ? <Navigate replace to="/" /> : <LoginForm />}
-						/>
-						<Route
-							path="/blogs/new"
-							element={
-								user ? (
-									<BlogForm createBlog={handleCreate} />
-								) : (
-									<Navigate replace to="/login" />
-								)
-							}
-						/>
-						<Route
-							path="/users"
-							element={<Users />}
-						/>
-						<Route
-							path="/blogs/:id"
-							element={
-								<Blog
-									blog={matchedBlog}
-									handleLike={handleLike}
-									handleDelete={handleDelete}
-									handleComment={handleComment}
-									user={user}
-								/>
-							}
-						/>
-						<Route
-							path="/"
-							element={
-								<div>
-									{user && <p>{user.name} logged in</p>}
-									{[...blogs]
-										.sort((a, b) => b.likes - a.likes)
-										.map((blog) => (
-											<BlogListItem key={blog.id} blog={blog} />
-										))}
-								</div>
-							}
-						/>
-						<Route path="/users/:id" element={<UserPage />} />
-						<Route path="*" element={<PageNotFound />} />
-					</Routes>
-				</ErrorBoundary>
-			</div>
-		</Container>
-	);
+        <ErrorBoundary>
+          <Routes>
+            <Route
+              path="/login"
+              element={user ? <Navigate replace to="/" /> : <LoginForm />}
+            />
+            <Route
+              path="/blogs/new"
+              element={
+                user ? (
+                  <BlogForm createBlog={handleCreate} />
+                ) : (
+                  <Navigate replace to="/login" />
+                )
+              }
+            />
+            <Route
+              path="/users"
+              element={<Users />}
+            />
+            <Route
+              path="/blogs/:id"
+              element={
+                <Blog
+                  blog={matchedBlog}
+                  handleLike={handleLike}
+                  handleDelete={handleDelete}
+                  handleComment={handleComment}
+                  user={user}
+                />
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <div>
+                  {user && <p>{user.name} logged in</p>}
+                  {[...blogs]
+                    .sort((a, b) => b.likes - a.likes)
+                    .map((blog) => (
+                      <BlogListItem key={blog.id} blog={blog} />
+                    ))}
+                </div>
+              }
+            />
+            <Route path="/users/:id" element={<UserPage />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </ErrorBoundary>
+      </div>
+    </Container>
+  );
 };
 
 export default App;

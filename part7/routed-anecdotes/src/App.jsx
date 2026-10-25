@@ -6,20 +6,20 @@ import Footer from "./components/Footer";
 import CreateNew from "./components/CreateNew";
 
 const App = () => {
-	return (
-		<Router>
-			<div>
-				<h1>Software anecdotes</h1>
-				<Menu />
-				<Routes>
-					<Route path="/" element={<AnecdoteList />} />
-					<Route path="/create" element={<CreateNew />} />
-					<Route path="/about" element={<About />} />
-				</Routes>
-				<Footer />
-			</div>
-		</Router>
-	);
+  return (
+    <Router>
+      <div>
+        <h1>Software anecdotes</h1>
+        <Menu />
+        <Routes>
+          <Route path="/" element={<AnecdoteList />} />
+          <Route path="/create" element={<CreateNew />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
 };
 
 export default App;

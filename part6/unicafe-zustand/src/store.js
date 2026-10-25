@@ -1,20 +1,20 @@
 import { create } from "zustand";
 
 const useFeedbackStore = create(set => ({
-	good: 0,
-	neutral: 0,
-	bad: 0,
-	actions: {
-		addGood: () => set(state => ({ good: state.good + 1 })),
-		addNeutral: () => set(state => ({ neutral: state.neutral + 1 })),
-		addBad: () => set(state => ({ bad: state.bad + 1 })),
-	},
+  good: 0,
+  neutral: 0,
+  bad: 0,
+  actions: {
+    addGood: () => set(state => ({ good: state.good + 1 })),
+    addNeutral: () => set(state => ({ neutral: state.neutral + 1 })),
+    addBad: () => set(state => ({ bad: state.bad + 1 })),
+  },
 }));
 
 export const useFeedback = () => useFeedbackStore((state) => ({
-	good: state.good,
-	neutral: state.neutral,
-	bad: state.bad,
+  good: state.good,
+  neutral: state.neutral,
+  bad: state.bad,
 }));
 
 export const useGood = () => useFeedbackStore((state) => state.good);
