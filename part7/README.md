@@ -1,3 +1,5 @@
-# Part 7
+# Part 7: React application development
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 7](http://fullstackopen.com/en/part7).
+[Full Stack Open — Part 7](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-extension)
+
+Explore React application architecture, custom hooks, routing, and build tooling.

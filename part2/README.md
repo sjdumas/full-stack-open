@@ -1,3 +1,5 @@
-# Part 2
+# Part 2: Communicating with the server
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 2](http://fullstackopen.com/en/part2).
+[Full Stack Open — Part 2](https://fullstackopen.com/en/part2)
+
+Render collections, handle forms, fetch data from a server, and style React applications.

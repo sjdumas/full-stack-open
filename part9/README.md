@@ -1,9 +1,9 @@
-# Part 9
+# Part 9: TypeScript
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 9](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-typescript).
+[Full Stack Open — Part 9](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-typescript)
 
-## GitHub
+Use TypeScript to build type-safe applications and services.
 
-This is the project GitHub repo link for all exercises in Part 9.
+## Separate projects
 
-- [TypeScript projects](https://github.com/sjdumas/fso-typescript)
+- [TypeScript projects](https://github.com/sjdumas/fso-typescript) — projects for the Part 9 exercises.

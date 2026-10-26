@@ -1,9 +1,9 @@
-# Part 8
+# Part 8: GraphQL
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 8](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-graphql).
+[Full Stack Open — Part 8](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-graphql)
 
-## GitHub
+Build GraphQL services and use them from a React application.
 
-This is the project GitHub repo link for all exercises in Part 8.
+## Separate projects
 
-- [GraphQL frontend and backend](https://github.com/sjdumas/fso-graphql)
+- [GraphQL frontend and backend](https://github.com/sjdumas/fso-graphql) — project for the Part 8 exercises.

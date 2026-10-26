@@ -1,3 +1,5 @@
-# Part 10
+# Part 10: React Native
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 10](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-react-native).
+[Full Stack Open — Part 10](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-react-native)
+
+Build cross-platform mobile applications with React Native.

@@ -1,3 +1,5 @@
-# Part 5
+# Part 5: Testing React applications
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 5](http://fullstackopen.com/en/part5).
+[Full Stack Open — Part 5](https://fullstackopen.com/en/part5)
+
+Test React applications and add token-based user authentication.

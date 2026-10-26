@@ -1,3 +1,5 @@
-# Part 6
+# Part 6: State management
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 6](http://fullstackopen.com/en/part6).
+[Full Stack Open — Part 6](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-state-management)
+
+Manage application state in React with tools and patterns for handling shared and server data.

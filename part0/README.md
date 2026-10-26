@@ -1,3 +1,5 @@
-# Part 0
+# Part 0: Fundamentals of web applications
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 0](http://fullstackopen.com/en/part0).
+[Full Stack Open — Part 0](https://fullstackopen.com/en/part0)
+
+Learn the basics of web applications and how communication between a browser and a server works.

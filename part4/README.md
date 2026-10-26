@@ -1,3 +1,5 @@
-# Part 4
+# Part 4: Testing Express servers and user administration
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 4](http://fullstackopen.com/en/part4).
+[Full Stack Open — Part 4](https://fullstackopen.com/en/part4)
+
+Write backend unit and integration tests, and implement user authentication and authorization.

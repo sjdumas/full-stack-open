@@ -1,9 +1,9 @@
-# Part 13
+# Part 13: Using relational databases
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 13](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-relational-databases).
+[Full Stack Open — Part 13](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-relational-databases)
 
-## GitHub
+Build a backend application that stores and queries data in a relational database.
 
-This is the project GitHub repo link for all exercises in Part 13.
+## Separate projects
 
-- [Blog application](https://github.com/sjdumas/fso-blog)
+- [Blog application](https://github.com/sjdumas/fso-blog) — project for the Part 13 exercises.

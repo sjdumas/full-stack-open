@@ -1,9 +1,9 @@
-# Part 3
+# Part 3: Programming a server with Node.js and Express
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 3](http://fullstackopen.com/en/part3).
+[Full Stack Open — Part 3](https://fullstackopen.com/en/part3)
 
-## GitHub
+Build and deploy a REST API with Node.js, Express, and MongoDB.
 
-This is the project GitHub repo link for all exercises in Part 3.
+## Separate projects
 
-- [Phonebook backend for Part 3 on GitHub](https://github.com/sjdumas/phonebook-backend)
+- [Phonebook backend](https://github.com/sjdumas/phonebook-backend) — backend project for the Part 3 exercises.

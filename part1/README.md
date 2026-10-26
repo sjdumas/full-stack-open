@@ -1,3 +1,5 @@
-# Part 1
+# Part 1: Introduction to React
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 1](http://fullstackopen.com/en/part1).
+[Full Stack Open — Part 1](https://fullstackopen.com/en/part1)
+
+Build user interfaces with React and practice the JavaScript concepts used to develop React applications.

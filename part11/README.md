@@ -1,10 +1,10 @@
-# Part 11
+# Part 11: CI/CD
 
-This directory contains the assignments for the University of Helsinki [Full Stack Open](https://fullstackopen.com/en/) course - [Part 11](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-continuous-integration).
+[Full Stack Open — Part 11](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-continuous-integration)
 
-## GitHub
+Automate software testing, integration, and deployment with continuous integration and delivery.
 
-These are the project GitHub repo links for all exercises in Part 11.
+## Separate projects
 
-- [Pokedex](https://github.com/sjdumas/fso-pokedex)
-- [Phonebook](https://github.com/sjdumas/fso-phonebook)
+- [Pokedex](https://github.com/sjdumas/fso-pokedex) — CI/CD project for Part 11.
+- [Phonebook](https://github.com/sjdumas/fso-phonebook) — CI/CD project for Part 11.
