@@ -40,6 +40,6 @@ This repository contains my exercises and projects from the University of Helsin
 | [Part 13](part13/README.md) | Using relational databases |
 | [Part 14](part14/README.md) | Next.js |
 
-## Separate projects
+## Separate Projects
 
 Standalone project links are listed in the README for the part they belong to.
