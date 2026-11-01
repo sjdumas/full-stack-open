@@ -4,6 +4,6 @@
 
 Build GraphQL services and use them from a React application.
 
-## Separate projects
+## Separate Project
 
 - [GraphQL frontend and backend](https://github.com/sjdumas/fso-graphql) — project for the Part 8 exercises.

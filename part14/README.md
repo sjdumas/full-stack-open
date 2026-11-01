@@ -4,6 +4,6 @@
 
 Build web applications with Next.js and React.
 
-## Separate projects
+## Separate Project
 
 - [Next.js blog application](https://github.com/sjdumas/fso-blog-app) — project for the Part 14 exercises.

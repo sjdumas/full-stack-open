@@ -1,4 +1,4 @@
-# Part 6: State management
+# Part 6: State Management
 
 [Full Stack Open — Part 6](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-state-management)
 

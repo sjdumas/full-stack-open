@@ -1,4 +1,4 @@
-# Part 7: React application development
+# Part 7: React Application Development
 
 [Full Stack Open — Part 7](https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-extension)
 

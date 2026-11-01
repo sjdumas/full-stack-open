@@ -4,6 +4,6 @@
 
 Package and run applications using containers and Docker.
 
-## Separate projects
+## Separate Project
 
 - [Containers project](https://github.com/sjdumas/fso-containers) — project for the Part 12 exercises.

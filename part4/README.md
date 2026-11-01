@@ -1,4 +1,4 @@
-# Part 4: Testing Express servers and user administration
+# Part 4: Testing Express Servers and User Administration
 
 [Full Stack Open — Part 4](https://fullstackopen.com/en/part4)
 

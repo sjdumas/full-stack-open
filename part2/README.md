@@ -1,4 +1,4 @@
-# Part 2: Communicating with the server
+# Part 2: Communicating with the Server
 
 [Full Stack Open — Part 2](https://fullstackopen.com/en/part2)
 

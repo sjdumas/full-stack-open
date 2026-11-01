@@ -1,4 +1,4 @@
-# Part 0: Fundamentals of web applications
+# Part 0: Fundamentals of Web Applications
 
 [Full Stack Open — Part 0](https://fullstackopen.com/en/part0)
 

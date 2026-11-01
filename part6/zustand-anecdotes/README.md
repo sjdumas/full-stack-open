@@ -1,16 +1,47 @@
-# React + Vite
+# Zustand Anecdotes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Anecdote app for Full Stack Open, part 6, with state managed in Zustand. Users can view anecdotes sorted by votes, filter them, vote for them, add new ones, and remove ones that have no votes.
 
-Currently, two official plugins are available:
+Built with React, Vite, and Zustand. Data comes from a local JSON Server.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting Started
 
-## React Compiler
+Install dependencies:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
+Start the JSON Server backend on `http://localhost:3001`. It uses `db.json` as its data file:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run server
+```
+
+In a second terminal, start the development server:
+
+```bash
+npm run dev
+```
+
+## Scripts
+
+| Command           | Description                                 |
+| ----------------- | ------------------------------------------- |
+| `npm run dev`     | Start the development server                |
+| `npm run server`  | Start JSON Server on port 3001              |
+| `npm run build`   | Build for production                        |
+| `npm run preview` | Preview the production build                |
+| `npm run lint`    | Lint the code with ESLint                   |
+| `npx vitest run`  | Run the store tests with Vitest             |
+
+## Project Structure
+
+```text
+src/
+  App.jsx               # Loads anecdotes and renders the app
+  store.js              # Zustand store for anecdotes and the filter
+  notificationStore.js  # Zustand store for notifications
+  components/           # AnecdoteForm, AnecdoteList, Filter, Notification
+  services/             # API calls to JSON Server
+```

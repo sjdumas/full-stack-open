@@ -1,6 +1,6 @@
 # Full Stack Open
 
-This repository contains my exercises and projects from the University of Helsinki
+This repository contains exercises and projects for the University of Helsinki's
 [Full Stack Open](https://fullstackopen.com/en/) course.
 
 ## Course Topics

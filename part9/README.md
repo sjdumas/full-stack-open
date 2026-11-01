@@ -4,6 +4,6 @@
 
 Use TypeScript to build type-safe applications and services.
 
-## Separate projects
+## Separate Projects
 
 - [TypeScript projects](https://github.com/sjdumas/fso-typescript) — projects for the Part 9 exercises.

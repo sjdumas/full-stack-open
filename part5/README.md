@@ -1,4 +1,4 @@
-# Part 5: Testing React applications
+# Part 5: Testing React Applications
 
 [Full Stack Open — Part 5](https://fullstackopen.com/en/part5)
 
